@@ -5,7 +5,6 @@
 package csfmarksanalysismvc;
 
 import java.awt.Color;
-import java.io.File;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;

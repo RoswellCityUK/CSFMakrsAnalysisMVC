@@ -24,6 +24,9 @@ public class CSFView extends javax.swing.JFrame {
     private boolean dMode = CSFMarksAnalysisMVC.developerMode;
     private DefaultListModel gradesArray = new DefaultListModel();
     
+    /**
+     * CSFView() Constructor
+     */
     public CSFView() {
         if(dMode) System.out.println("View: CSFView() Constructor");
         try {

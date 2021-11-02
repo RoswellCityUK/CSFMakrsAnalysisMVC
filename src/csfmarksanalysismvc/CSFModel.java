@@ -14,6 +14,7 @@ import javax.swing.DefaultListModel;
 public class CSFModel {
     private DefaultListModel gradesArray = new DefaultListModel();
     
+    private boolean dMode = CSFMarksAnalysisMVC.developerMode;
     private int totalFullMarksPass;
     private int totalBorderLinePass;
     private int totalFullPaperPass;
@@ -24,30 +25,30 @@ public class CSFModel {
     private double percFail;
     
     public CSFModel() {
-        System.out.println("Model: CSFModel() Constructor");
+        if(dMode) System.out.println("Model: CSFModel() Constructor");
     }
     public void setGradesArray(DefaultListModel gradesArray){
-        System.out.println("Model: setGradeArray()");
+        if(dMode) System.out.println("Model: setGradeArray()");
         this.gradesArray = gradesArray;
     }
     public DefaultListModel getGradesArray(){
-        System.out.println("Model: getGradeArray()");
+        if(dMode) System.out.println("Model: getGradeArray()");
         return gradesArray;
     }
     public void setTotalFullMarksPass(int score){
-        System.out.println("Model: setTotalFullMarksPass(" + score +")");
+        if(dMode) System.out.println("Model: setTotalFullMarksPass(" + score +")");
         this.totalFullMarksPass = score;
     }
     public void setTotalBorderLinePass(int score){
-        System.out.println("Model: setTotalBorderLinePass(" + score +")");
+        if(dMode) System.out.println("Model: setTotalBorderLinePass(" + score +")");
         this.totalBorderLinePass = score;        
     }
     public void setTotalFullPaperPass(int score){
-        System.out.println("Model: setTotalFullPaperPass(" + score +")");
+        if(dMode) System.out.println("Model: setTotalFullPaperPass(" + score +")");
         this.totalFullPaperPass = score;   
     }
     public void setPercFailSec(double score, int section){
-        System.out.println("Model: setPercFailSec(" + score + ", " + section + ")");
+        if(dMode) System.out.println("Model: setPercFailSec(" + score + ", " + section + ")");
         if(!(score>=0)) score = 0;
         switch(section){
             case 1 -> this.percFailSecOne = score;
@@ -56,29 +57,29 @@ public class CSFModel {
         }  
     }
     public void setPercPass(double score){
-        System.out.println("Model: setPercPass(" + score +")");
+        if(dMode) System.out.println("Model: setPercPass(" + score +")");
         if(!(score>=0)) score = 0;
         this.percPass = score;
     }
     public void setPercFail(double score){
-        System.out.println("Model: setPercFail(" + score +")");
+        if(dMode) System.out.println("Model: setPercFail(" + score +")");
         if(!(score>=0)) score = 0;
         this.percFail = score;
     }
     public int getTotalFullMarksPass(){
-        System.out.println("Model: getTotalFullMarksPass()");
+        if(dMode) System.out.println("Model: getTotalFullMarksPass()");
         return totalFullMarksPass;
     }
     public int getTotalBorderLinePass(){
-        System.out.println("Model: getTotalBorderLinePass()");
+        if(dMode) System.out.println("Model: getTotalBorderLinePass()");
         return totalBorderLinePass;
     }
     public int getTotalFullPaperPass(){
-        System.out.println("Model: getTotalFullPaperPass()");
+        if(dMode) System.out.println("Model: getTotalFullPaperPass()");
         return totalFullPaperPass;
     }
     public double getPercFailSec(int section){
-        System.out.println("Model: getPercFailSec()");
+        if(dMode) System.out.println("Model: getPercFailSec()");
         return switch (section) {
             case 1 -> percFailSecOne;
             case 2 -> percFailSecTwo;
@@ -87,11 +88,11 @@ public class CSFModel {
         };  
     }
     public double getPercPass(){
-        System.out.println("Model: getPercPass()");
+        if(dMode) System.out.println("Model: getPercPass()");
         return percPass;
     }
     public double getPercFail(){
-        System.out.println("Model: getPercFail()");
+        if(dMode) System.out.println("Model: getPercFail()");
         return percFail;
     }   
 }

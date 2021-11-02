@@ -10,12 +10,14 @@ package csfmarksanalysismvc;
  */
 public class CSFMarksAnalysisMVC {
 
+    public static boolean developerMode = false;
+    //@TODO public static boolean noInterfaceMode = false;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // Assemble all the pieces of the MVC
-        System.out.println("Assembling App modules...");
+        if(developerMode) System.out.println("Assembling App modules...");
         CSFModel m = new CSFModel();
         CSFView v = new CSFView();
         CSFController c = new CSFController(m, v);

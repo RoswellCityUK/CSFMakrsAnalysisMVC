@@ -25,7 +25,7 @@ public class CSFModel {
     private double percFail;
     
     /**
-     * COnstructor for CSFModel().
+     * Constructor for CSFModel().
      */
     public CSFModel() {
         if(dMode) System.out.println("Model: CSFModel() Constructor");

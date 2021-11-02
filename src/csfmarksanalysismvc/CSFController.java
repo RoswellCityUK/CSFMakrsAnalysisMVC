@@ -28,12 +28,17 @@ import javax.swing.text.BadLocationException;
  */
 public class CSFController {
 
-    private boolean dMode = CSFMarksAnalysisMVC.developerMode;
+    private final boolean dMode = CSFMarksAnalysisMVC.developerMode;
     private final CSFModel model;
     private final CSFView view;
     private final String default_file = System.getProperty("user.dir")+"\\gradesfile.txt";
     File defaultFile = new File(default_file);
 
+    /**
+     * Linking Controller to View and Model.
+     * @param m
+     * @param v
+     */
     public CSFController(CSFModel m, CSFView v) {
         if(dMode) System.out.println("Controller: CSFController(m, v) Constructor");
         model = m;
@@ -41,6 +46,10 @@ public class CSFController {
         initView();
         initModel();
     }
+
+    /**
+     * Setting up few variables important for handling View.
+     */
     public final void initView() {
         if(dMode) System.out.println("Controller: initView()");
         JButton defaultButton = view.getBtnAddElement();
@@ -48,10 +57,18 @@ public class CSFController {
         view.setVisible(true);
         view.getFileChooserTxt().setCurrentDirectory(defaultFile);
     }
+
+    /**
+     * Linking gradesArray between View and Model.
+     */
     public final void initModel() {
         if(dMode) System.out.println("Controller: initModel()");
         model.setGradesArray(view.getGradesArray());
     }
+
+    /**
+     * Introducing Action Listeners to Interface's buttons.
+     */
     public final void initController() {
         if(dMode) System.out.println("Controller: initController()");
         view.getBtnAddElement().addActionListener(e -> {

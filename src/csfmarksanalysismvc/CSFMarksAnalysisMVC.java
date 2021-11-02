@@ -10,8 +10,12 @@ package csfmarksanalysismvc;
  */
 public class CSFMarksAnalysisMVC {
 
+    /**
+     *Enabling detailed logging to console.
+     */
     public static boolean developerMode = false;
     //@TODO public static boolean noInterfaceMode = false;
+    
     /**
      * @param args the command line arguments
      */

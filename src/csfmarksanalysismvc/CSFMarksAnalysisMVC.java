@@ -6,7 +6,7 @@ package csfmarksanalysismvc;
 
 /**
  *
- * @author tg
+ * @author Tommy Grabowski
  */
 public class CSFMarksAnalysisMVC {
 

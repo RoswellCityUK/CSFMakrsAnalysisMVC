@@ -17,7 +17,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author tg
+ * @author Tommy Grabowski
  */
 public class CSFView extends javax.swing.JFrame {
     

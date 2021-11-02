@@ -9,7 +9,7 @@ import javax.swing.DefaultListModel;
 
 /**
  *
- * @author tg
+ * @author Tommy Grabowski
  */
 public class CSFModel {
     private DefaultListModel gradesArray = new DefaultListModel();

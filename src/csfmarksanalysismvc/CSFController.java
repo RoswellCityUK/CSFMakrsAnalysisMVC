@@ -24,7 +24,7 @@ import javax.swing.text.BadLocationException;
 
 /**
  *
- * @author tg
+ * @author Tommy Grabowski
  */
 public class CSFController {
 

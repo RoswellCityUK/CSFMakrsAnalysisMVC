@@ -15,6 +15,7 @@ public class CSFMarksAnalysisMVC {
      */
     public static void main(String[] args) {
         // Assemble all the pieces of the MVC
+        System.out.println("Assembling App modules...");
         CSFModel m = new CSFModel();
         CSFView v = new CSFView();
         CSFController c = new CSFController(m, v);

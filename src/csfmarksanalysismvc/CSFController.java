@@ -35,21 +35,25 @@ public class CSFController {
     File defaultFile = new File(default_file);
     
     public CSFController(CSFModel m, CSFView v) {
+        System.out.println("Controller: CSFController(m, v) Constructor");
         model = m;
         view = v;
-        initView(v);
+        initView();
         initModel();
     }
-    public final void initView(CSFView v) {
+    public final void initView() {
+        System.out.println("Controller: initView()");
         JButton defaultButton = view.getBtnAddElement();
         SwingUtilities.getRootPane(defaultButton).setDefaultButton(defaultButton);
         view.setVisible(true);
         view.getFileChooserTxt().setCurrentDirectory(defaultFile);
     }
     public final void initModel() {
+        System.out.println("Controller: initModel()");
         model.setGradesArray(view.getGradesArray());
     }
     public final void initController() {
+        System.out.println("Controller: initController()");
         view.getBtnAddElement().addActionListener(e -> {
             addElement(e);
             update();
@@ -71,6 +75,7 @@ public class CSFController {
         });
     }
     private void addElement(ActionEvent evt) {
+        System.out.println("Controller: addElement(evt)");
         try
         {
             if(!(view.getTxtNewGrade().getText().isBlank()) 
@@ -93,9 +98,11 @@ public class CSFController {
         }
     }
     private void clearAll(ActionEvent evt) {
+        System.out.println("Controller: clearAll(evt)");
         view.getGradesArray().clear();
     }
     private void deleteElement(ActionEvent evt) {
+        System.out.println("Controller: deleteElement(evt)");
         if(!view.getGradesArray().isEmpty() && view.getListGrades().getSelectedIndex()!=-1)
         {
             int confirm = JOptionPane.showConfirmDialog(null ,"Sure? You want to delete this element?", "Confirm!",
@@ -111,6 +118,7 @@ public class CSFController {
         }
     }
     private void exportToFile(ActionEvent evt) {
+        System.out.println("Controller: exportToFile(evt)");
         if(!view.getCBoxDefaultFile().isSelected())
         {
             int returnVal = view.getFileChooserTxt().showOpenDialog(view);
@@ -130,7 +138,7 @@ public class CSFController {
                     gradesFileWriter.close();
                     System.out.println("Successfully wrote to the file.");
                 } catch (IOException e) {
-                  System.out.println("problem accessing file"+file.getAbsolutePath());
+                  System.out.println("problem accessing file" + file.getAbsolutePath());
                 }
             } else {
                 System.out.println("File access cancelled by user.");
@@ -152,11 +160,12 @@ public class CSFController {
                 gradesFileWriter.close();
                 System.out.println("Successfully wrote to the file.");
             } catch (IOException e) {
-                  System.out.println("problem accessing file"+defaultFile.getAbsolutePath());
+                  System.out.println("problem accessing file" + defaultFile.getAbsolutePath());
             }
         }
     }
     private void exportReportToFile(ActionEvent evt) {
+        System.out.println("Controller: exportReportToFile(evt)");
         int returnVal = view.getFileChooserTxt().showOpenDialog(view);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = view.getFileChooserTxt().getSelectedFile();
@@ -172,13 +181,14 @@ public class CSFController {
                 gradesFileWriter.close();
                 System.out.println("Successfully wrote to the file.");
             } catch (IOException e) {
-              System.out.println("problem accessing file"+file.getAbsolutePath());
+              System.out.println("problem accessing file" + file.getAbsolutePath());
             }
         } else {
             System.out.println("File access cancelled by user.");
         }
     }
     private ArrayList<String> generateReport(){
+        System.out.println("Controller: generateReport()");
         ArrayList<String> reportData = new ArrayList();
         reportData.add("Number of elements:\t\t\t"
                 + model.getGradesArray().size());
@@ -220,6 +230,7 @@ public class CSFController {
         return reportData;
     }
     private void importFromFile(ActionEvent evt) {
+        System.out.println("Controller: importFromFile(evt)");
         if(!view.getCBoxDefaultFile().isSelected())
         {
             int returnVal = view.getFileChooserTxt().showOpenDialog(view);
@@ -254,13 +265,16 @@ public class CSFController {
         }
     }
     private void exitApp(ActionEvent evt) {
+        System.out.println("Controller: exitApp(evt)");
         System.exit(0);
     }
     private void update(){
+        System.out.println("Controller: update()");
         updateModel();
         updateView();
     }
     private void updateModel(){
+        System.out.println("Controller: updateModel()");
                 
         //Pass Percentag
         model.setPercPass((double)(statsFullPaperPass() * 100) / numberOfMarksTotal());
@@ -287,6 +301,7 @@ public class CSFController {
         model.setTotalFullPaperPass(statsFullPaperPass());
     }
     private int statsFullMarksPass(){
+        System.out.println("Controller: statsFullMarksPass()");
         int numberOfMarksTotal = model.getGradesArray().size();
         int statsFullMarksPass = 0;
         for(int i = 0; i<numberOfMarksTotal; i++){
@@ -296,6 +311,7 @@ public class CSFController {
         return statsFullMarksPass;
     }
     private int statsBorderLinePass(){
+        System.out.println("Controller: statsBorderLinePass()");
         int numberOfMarksTotal = model.getGradesArray().size();
         int statsBorderLinePass = 0;
         for(int i = 0; i<numberOfMarksTotal; i++){
@@ -305,6 +321,7 @@ public class CSFController {
         return statsBorderLinePass;
     }
     private int statsFullPaperPass(){
+        System.out.println("Controller: statsFullPaperPass()");
         int numberOfMarksTotal = model.getGradesArray().size();
         int statsFullPaperPass = 0;
         for(int i = 0; i<numberOfMarksTotal; i++){
@@ -314,6 +331,7 @@ public class CSFController {
         return statsFullPaperPass;
     }
     private int statsFailSec(int section){
+        System.out.println("Controller: statsFailSec("+ section +")");
         int numberOfMarksTotal = model.getGradesArray().size();
         int statsFailSec = 0;
         String regex = "";
@@ -329,9 +347,11 @@ public class CSFController {
         return statsFailSec;
     }   
     private int numberOfMarksTotal(){
+        System.out.println("Controller: numberOfMarksTotal()");
         return model.getGradesArray().size();
     }
     private void updateView(){
+        System.out.println("Controller: updateView()");
         //Refreshing View
         DecimalFormat df = new DecimalFormat("#,###.##");
         df.setRoundingMode(RoundingMode.HALF_UP);

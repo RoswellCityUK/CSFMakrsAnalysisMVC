@@ -20,7 +20,6 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.BadLocationException;
 
 /**
@@ -34,7 +33,7 @@ public class CSFController {
     private final CSFView view;
     private final String default_file = System.getProperty("user.dir")+"\\gradesfile.txt";
     File defaultFile = new File(default_file);
-    
+
     public CSFController(CSFModel m, CSFView v) {
         if(dMode) System.out.println("Controller: CSFController(m, v) Constructor");
         model = m;
@@ -79,8 +78,8 @@ public class CSFController {
         if(dMode) System.out.println("Controller: addElement(evt)");
         try
         {
-            if(!(view.getTxtNewGrade().getText().isBlank()) 
-                && view.getTxtNewGrade().getText().length() == 3 
+            if(!(view.getTxtNewGrade().getText().isBlank())
+                && view.getTxtNewGrade().getText().length() == 3
                 && Integer.parseInt(view.getTxtNewGrade().getText(0, 1)) < 6
                 && Integer.parseInt(view.getTxtNewGrade().getText(1, 1)) < 6
                 && Integer.parseInt(view.getTxtNewGrade().getText(2, 1)) < 6)
@@ -126,7 +125,7 @@ public class CSFController {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = view.getFileChooserTxt().getSelectedFile();
                 System.out.println("Selected file: " + file.getAbsolutePath());
-                try {                   
+                try {
                     BufferedWriter gradesFileWriter = new BufferedWriter(new FileWriter(file.getAbsolutePath()));
                     String data;
                     for(int i = 0; i < model.getGradesArray().getSize(); i++)
@@ -171,7 +170,7 @@ public class CSFController {
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = view.getFileChooserTxt().getSelectedFile();
             System.out.println("Selected file: " + file.getAbsolutePath());
-            try {                   
+            try {
                 BufferedWriter gradesFileWriter = new BufferedWriter(new FileWriter(file.getAbsolutePath()));
                 for(String data : generateReport())
                 {
@@ -193,19 +192,19 @@ public class CSFController {
         ArrayList<String> reportData = new ArrayList();
         reportData.add("Number of elements:\t\t\t"
                 + model.getGradesArray().size());
-        
+
         reportData.add("");
         reportData.add("PASS (total):\t\t\t\t"
                 + model.getTotalFullPaperPass());
         reportData.add("PASS (%):\t\t\t\t\t"
                 + (double)(model.getTotalFullPaperPass()*100)/model.getGradesArray().size() + "%");
-        
+
         reportData.add("");
         reportData.add("FAIL (total):\t\t\t\t"
                 + (model.getGradesArray().size()-model.getTotalFullPaperPass()));
         reportData.add("FAIL (%):\t\t\t\t\t"
                 + (double)((model.getGradesArray().size()-model.getTotalFullPaperPass())*100)/model.getGradesArray().size() + "%");
-        
+
         reportData.add("");
         reportData.add("FullMarks Pass (total):\t\t"
                 + model.getTotalFullMarksPass());
@@ -215,7 +214,7 @@ public class CSFController {
                 + model.getTotalBorderLinePass());
         reportData.add("BorderLine Pass (%):\t\t"
                 + (double)(model.getTotalBorderLinePass()*100)/model.getGradesArray().size() + "%");
-        
+
         reportData.add("");
         reportData.add("Section 1 Fail (%):\t\t\t"
                 + model.getPercFailSec(1) + "%");
@@ -223,11 +222,11 @@ public class CSFController {
                 + model.getPercFailSec(2) + "%");
         reportData.add("Section 3 Fail (%):\t\t\t"
                 + model.getPercFailSec(3) + "%");
-        
+
         reportData.add("");
         reportData.add("Elements: " + model.getGradesArray().toString());
-        
-        
+
+
         return reportData;
     }
     private void importFromFile(ActionEvent evt) {
@@ -276,28 +275,28 @@ public class CSFController {
     }
     private void updateModel(){
         if(dMode) System.out.println("Controller: updateModel()");
-                
+
         //Pass Percentag
         model.setPercPass((double)(statsFullPaperPass() * 100) / numberOfMarksTotal());
-        
+
         //Fail Percentage
         model.setPercFail((double)((numberOfMarksTotal() - statsFullPaperPass()) * 100) / numberOfMarksTotal());
-        
+
         //First Section Fail Percentage
         model.setPercFailSec((double)(statsFailSec(1) * 100)/numberOfMarksTotal(), 1);
-        
+
         //Second Section Fail Percentage
         model.setPercFailSec((double)(statsFailSec(2) * 100) / numberOfMarksTotal(), 2);
-        
+
         //Third Section Fail Percentage
         model.setPercFailSec((double)(statsFailSec(3) * 100) / numberOfMarksTotal(), 3);
-        
+
         //Border Line Pass Total
         model.setTotalBorderLinePass(statsBorderLinePass());
-        
+
         //Full Mark Pass Total
         model.setTotalFullMarksPass(statsFullMarksPass());
-        
+
         //Full Paper Pass Total
         model.setTotalFullPaperPass(statsFullPaperPass());
     }
@@ -346,7 +345,7 @@ public class CSFController {
                 statsFailSec++;
         }
         return statsFailSec;
-    }   
+    }
     private int numberOfMarksTotal(){
         if(dMode) System.out.println("Controller: numberOfMarksTotal()");
         return model.getGradesArray().size();
@@ -356,39 +355,39 @@ public class CSFController {
         //Refreshing View
         DecimalFormat df = new DecimalFormat("#,###.##");
         df.setRoundingMode(RoundingMode.HALF_UP);
-        
+
         view.getLblBorderLinePass().setText(df.format(
                 model.getTotalBorderLinePass()
         ));
-        
+
         view.getLblFail().setText(df.format(
                 model.getPercFail()
         ) + "%");
-        
+
         view.getLblFailedSection(1).setText(df.format(
                 model.getPercFailSec(1)
         ) + "%");
-        
+
         view.getLblFailedSection(2).setText(df.format(
                 model.getPercFailSec(2)
         ) + "%");
-        
+
         view.getLblFailedSection(3).setText(df.format(
                 model.getPercFailSec(3)
         ) + "%");
-        
+
         view.getLblFullMarksPass().setText(Integer.toString(
                 model.getTotalFullMarksPass()
         ));
-        
+
         view.getLblFullPaperPass().setText(Integer.toString(
                 model.getTotalFullPaperPass()
         ));
-        
+
         view.getLblNumberOfElements().setText(Integer.toString(
                 model.getGradesArray().getSize()
         ));
-        
+
         view.getLblPass().setText(df.format(
                 model.getPercPass()
         )+ "%");

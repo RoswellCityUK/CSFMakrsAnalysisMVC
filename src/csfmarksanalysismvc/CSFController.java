@@ -36,8 +36,10 @@ public class CSFController {
 
     /**
      * Linking Controller to View and Model.
-     * @param m
-     * @param v
+     * @param m - model reference
+     * @param v - view reference
+     * @param csfm - model type
+     * @param csfv - view type
      */
     public CSFController(CSFModel m, CSFView v) {
         if(dMode) System.out.println("Controller: CSFController(m, v) Constructor");

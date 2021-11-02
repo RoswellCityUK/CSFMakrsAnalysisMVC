@@ -2,6 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
+//@TODO: 
+//  -   public static boolean noInterfaceMode = false;
+//  -   command line interface
+//  -   javadoc
 package csfmarksanalysismvc;
 
 /**
@@ -14,7 +18,6 @@ public class CSFMarksAnalysisMVC {
      *Enabling detailed logging to console.
      */
     public static boolean developerMode = false;
-    //@TODO public static boolean noInterfaceMode = false;
     
     /**
      * @param args the command line arguments

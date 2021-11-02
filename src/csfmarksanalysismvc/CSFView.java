@@ -24,6 +24,7 @@ public class CSFView extends javax.swing.JFrame {
     private DefaultListModel gradesArray = new DefaultListModel();
     
     public CSFView() {
+        System.out.println("View: CSFView() Constructor");
         try {
         for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
@@ -320,6 +321,7 @@ public class CSFView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void txtNewGradeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNewGradeFocusGained
+        System.out.println("txtNewGradeFocusGained()");
         txtNewGrade.setText("");
         txtNewGrade.setBorder(BorderFactory.createLineBorder(Color.gray));
     }//GEN-LAST:event_txtNewGradeFocusGained
@@ -358,24 +360,31 @@ public class CSFView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     public JLabel getLblBorderLinePass(){
+        System.out.println("View: getLblBorderLinePass()");
         return lblBorderLinePass;
     }
     public void setLblBorderLinePass(JLabel lblBorderLinePass){
+        System.out.println("View: setLblBorderLinePass()");
         this.lblBorderLinePass = lblBorderLinePass;
     }
     public JLabel getLblFail(){
+        System.out.println("View: getLblFail()");
         return lblFail;
     }
     public void setLblFail(JLabel lblFail){
+        System.out.println("View: setLblFail()");
         this.lblFail = lblFail;
     }
     public JLabel getLblPass(){
+        System.out.println("View: getLblPass()");
         return lblPass;
     }
     public void setLblPass(JLabel lblPass){
+        System.out.println("View: setLblPass()");
         this.lblPass = lblPass;
     }
     public JLabel getLblFailedSection(int section){
+        System.out.println("View: getLblFailedSection(" + section +")");
         return switch (section) {
             case 1 -> lblFailedSection1;
             case 2 -> lblFailedSection2;
@@ -384,6 +393,7 @@ public class CSFView extends javax.swing.JFrame {
         };
     }
     public void setLblFailedSection(JLabel lblFailedSection,int section){
+        System.out.println("View: setLblFailedSection(" + section + ")");
         switch (section) {
             case 1 -> this.lblFailedSection1 = lblFailedSection;
             case 2 -> this.lblFailedSection2 = lblFailedSection;
@@ -392,66 +402,87 @@ public class CSFView extends javax.swing.JFrame {
         }
     }
     public JLabel getLblFullMarksPass(){
+        System.out.println("View: getLblFullMarksPass()");
         return lblFullMarksPass;
     }
     public void setLblFullMarksPass(JLabel lblFullMarksPass){
+        System.out.println("View: setLblFullMarksPass()");
         this.lblFullMarksPass = lblFullMarksPass;
     }
     public JLabel getLblFullPaperPass(){
+        System.out.println("View: getLblFullPaperPass()");
         return lblFullPaperPass;
     }
     public void setLblFullPaperPass(JLabel lblFullPaperPass){
+        System.out.println("View: setLblFullPaperPass()");
         this.lblFullPaperPass = lblFullPaperPass;
     }
     public JLabel getLblNumberOfElements(){
+        System.out.println("View: getLblNumberOfElements()");
         return lblNumberOfElements;
     }
     public void setLblNumberOfElements(JLabel lblNumberOfElements){
+        System.out.println("View: setLblNumberOfElements()");
         this.lblNumberOfElements = lblNumberOfElements;
     }
     public JTextField getTxtNewGrade(){
+        System.out.println("View: getTxtNewGrade()");
         return txtNewGrade;
     }
     public void setTxtNewGrade(JTextField txtNewGrade){
+        System.out.println("View: setTxtNewGrade()");
         this.txtNewGrade = txtNewGrade;
     }
     public JCheckBox getCBoxDefaultFile(){
+        System.out.println("View: getCBoxDefaultFile()");
         return cboxDefaultFile;
     }
     public JList getListGrades(){
+        System.out.println("View: getListGrades()");
         return listGrades;
     }
     public void setListGrades(JList listGrades){
+        System.out.println("View: setListGrades()");
         this.listGrades = listGrades;
     }
     public JButton getBtnAddElement(){
+        System.out.println("View: getBtnAddElement()");
         return btnAddElement;
     }
     public JButton getBtnClearAll(){
+        System.out.println("View: getBtnClearAll()");
         return btnClearAll;
     }
     public JButton getBtnDeleteElement(){
+        System.out.println("View: getBtnDeleteElement()");
         return btnDeleteElement;
     }
     public JButton getBtnExit(){
+        System.out.println("View: getBtnExit()");
         return btnExit;
     }
     public JButton getBtnExport(){
+        System.out.println("View: getBtnExport()");
         return btnExport;
     }
     public JButton getBtnExportReport(){
+        System.out.println("View: getBtnExportReport()");
         return btnExportReport;
     }
     public JButton getBtnImport(){
+        System.out.println("View: getBtnImport()");
         return btnImport;
     }
     public void setGradesArray(DefaultListModel gradesArray){
+        System.out.println("View: setGradesArray()");
         this.gradesArray = gradesArray;
     }
     public DefaultListModel getGradesArray(){
+        System.out.println("View: getGradesArray()");
         return gradesArray;
     }
     public JFileChooser getFileChooserTxt(){
+        System.out.println("View: getFileChooserTxt()");
         return fileChooserTxt;
     }
 }
